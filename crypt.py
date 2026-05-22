@@ -5,7 +5,7 @@ from cryptography.fernet import Fernet
 app = FastAPI()
 
 # =========================
-# 🔐 "DATABASE" (demo)
+# "DATABASE" (demo)
 # =========================
 users_db = {
     "user1": {
@@ -20,14 +20,14 @@ users_db = {
 
 
 # =========================
-# 📦 REQUEST MODEL
+# REQUEST MODEL
 # =========================
 class TextRequest(BaseModel):
     text: str
 
 
 # =========================
-# 🔍 API KEY AUTH
+# API KEY AUTH
 # =========================
 def get_user(x_api_key: str = Header(None)):
     for username, data in users_db.items():
@@ -38,7 +38,7 @@ def get_user(x_api_key: str = Header(None)):
 
 
 # =========================
-# 🔐 ENCRYPT
+# ENCRYPT
 # =========================
 @app.post("/crypt")
 def encrypt(req: TextRequest, user=Depends(get_user)):
@@ -54,7 +54,7 @@ def encrypt(req: TextRequest, user=Depends(get_user)):
 
 
 # =========================
-# 🔓 DECRYPT
+# DECRYPT
 # =========================
 @app.post("/decrypt")
 def decrypt(req: TextRequest, user=Depends(get_user)):
