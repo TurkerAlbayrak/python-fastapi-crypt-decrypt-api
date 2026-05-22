@@ -11,7 +11,7 @@ USERS = {
 
 
 # =========================
-# 🔐 REQUEST FUNCTIONS
+# REQUEST FUNCTIONS
 # =========================
 def encrypt(text, user):
     res = requests.post(
@@ -32,7 +32,7 @@ def decrypt(text, user):
 
 
 # =========================
-# 📊 STRESS TEST
+# STRESS TEST
 # =========================
 def stress_test(user, count=1000):
     print(f"🚀 Stress test başlıyor ({count} request)...")
@@ -44,26 +44,26 @@ def stress_test(user, count=1000):
 
     end = time.time()
 
-    print(f"✅ Bitti!")
-    print(f"⏱ Süre: {end - start:.2f} saniye")
-    print(f"⚡ RPS: {count / (end - start):.2f} request/s")
+    print(f"Bitti!")
+    print(f"Süre: {end - start:.2f} saniye")
+    print(f"RPS: {count / (end - start):.2f} request/s")
 
 
 # =========================
-# 🧠 CLI
+# CLI
 # =========================
 def main():
     if len(sys.argv) < 2:
         print("""
 KULLANIM:
 
-🔐 Encrypt:
+Encrypt:
 python client.py encrypt user1 "Merhaba Dünya"
 
-🔓 Decrypt:
+Decrypt:
 python client.py decrypt user1 "encrypted_text"
 
-📊 Stress test:
+Stress test:
 python client.py stress user1 1000
         """)
         return
@@ -78,7 +78,7 @@ python client.py stress user1 1000
         text = sys.argv[3]
 
         result = encrypt(text, user)
-        print("🔐 RESULT:", result)
+        print("RESULT:", result)
 
     # =========================
     # DECRYPT
@@ -88,7 +88,7 @@ python client.py stress user1 1000
         text = sys.argv[3]
 
         result = decrypt(text, user)
-        print("🔓 RESULT:", result)
+        print("RESULT:", result)
 
     # =========================
     # STRESS TEST
