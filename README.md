@@ -1,8 +1,8 @@
-# CryptApp 🔐
+# CryptApp 
 
 CryptApp, kullanıcı bazlı şifreleme (encryption) ve şifre çözme (decryption) işlemlerini gerçekleştiren, FastAPI tabanlı modern bir REST API servisidir. Yanında kolay test ve otomasyon için komut satırı aracı (CLI) içeren bir Python istemcisi ile birlikte gelir.
 
-## 🚀 Özellikler
+## Özellikler
 
 - **FastAPI Backend**: Hızlı, asenkron destekli ve otomatik interaktif API dokümantasyonu (Swagger UI).
 - **Güvenli Şifreleme**: `cryptography` kütüphanesindeki `Fernet` (AES-128 tabanlı simetrik şifreleme) standardını kullanır.
@@ -12,7 +12,7 @@ CryptApp, kullanıcı bazlı şifreleme (encryption) ve şifre çözme (decrypti
 
 ---
 
-## 🛠 Gereksinimler
+## Gereksinimler
 
 Projenin çalıştırılması için Python 3.8+ gereklidir. Gerekli kütüphaneler:
 
@@ -32,7 +32,7 @@ pip install fastapi uvicorn cryptography requests pydantic
 
 ---
 
-## 📁 Proje Yapısı
+## Proje Yapısı
 
 ```text
 cryptapp/
@@ -42,7 +42,7 @@ cryptapp/
 
 ---
 
-## ⚙️ Sunucuyu Başlatma
+## Sunucuyu Başlatma
 
 FastAPI sunucusunu (Uvicorn ile) başlatmak için projenin kök dizininde şu komutu çalıştırın:
 
@@ -55,7 +55,7 @@ Sunucu varsayılan olarak `http://127.0.0.1:8000` adresinde çalışmaya başlay
 
 ---
 
-## 🖥️ İstemci (Client CLI) Kullanımı
+## İstemci (Client CLI) Kullanımı
 
 Sunucu arka planda çalışırken, `client.py` üzerinden terminalden doğrudan işlemler gerçekleştirebilirsiniz.
 
@@ -79,7 +79,7 @@ python client.py encrypt user1 "Merhaba Dunya"
 ```
 **Çıktı:**
 ```json
-🔐 RESULT: {'user': 'user1', 'encrypted': 'gAAAAAB...'}
+RESULT: {'user': 'user1', 'encrypted': 'gAAAAAB...'}
 ```
 
 ### 2. Şifre Çözme (Decrypt)
@@ -95,7 +95,7 @@ python client.py decrypt user1 "gAAAAAB..."
 ```
 **Çıktı:**
 ```json
-🔓 RESULT: {'user': 'user1', 'decrypted': 'Merhaba Dunya'}
+RESULT: {'user': 'user1', 'decrypted': 'Merhaba Dunya'}
 ```
 
 ### 3. Stres Testi (Stress Test)
@@ -111,15 +111,15 @@ python client.py stress user1 1000
 ```
 **Çıktı:**
 ```text
-🚀 Stress test başlıyor (1000 request)...
-✅ Bitti!
-⏱ Süre: 1.45 saniye
-⚡ RPS: 689.66 request/s
+Stress test başlıyor (1000 request)...
+Bitti!
+Süre: 1.45 saniye
+RPS: 689.66 request/s
 ```
 
 ---
 
-## 🔒 Güvenlik & Çalışma Mantığı
+## Güvenlik & Çalışma Mantığı
 
 1. **Simetrik Anahtar Üretimi**: Uygulama ayağa kalktığında `Fernet.generate_key()` ile her kullanıcı için bellek üzerinde (In-Memory) eşsiz bir 32-byte anahtar (key) oluşturulur.
 2. **Kimlik Doğrulama**: Sunucuya atılan her istekte `x-api-key` başlığı aranır. Gönderilen API anahtarı `users_db` içindeki değerle eşleşiyorsa işlem onaylanır, aksi takdirde `401 Unauthorized` hatası fırlatılır.
